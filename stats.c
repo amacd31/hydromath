@@ -4,7 +4,8 @@
 double sum(double * data, int n) {
     double sum = 0;
 
-    for(int i = 0; i < n; i++) {
+    int i;
+    for(i = 0; i < n; i++) {
         sum += data[i];
     }
 
@@ -14,7 +15,8 @@ double sum(double * data, int n) {
 double mean(double * data, int n) {
     double sum = 0;
 
-    for(int i = 0; i < n; i++) {
+    int i;
+    for(i = 0; i < n; i++) {
         sum += data[i];
     }
 
@@ -25,7 +27,8 @@ double variance_mean(double * data, double mean, int n) {
     double sum = 0;
 
     double z = 0;
-    for(int i = 0; i < n; i++) {
+    int i;
+    for(i = 0; i < n; i++) {
         sum += pow(data[i] - mean, 2);
     }
 
