@@ -21,12 +21,12 @@ int main(void)
     double obs[5] = {13,17,18,20,24};
     double sim[5] = {12,15,20,22,24};
 
-    double mean_square_error = mse(obs, sim, 5);
+    double mean_square_error = mse_c(obs, sim, 5);
     printf("%f\n", mean_square_error);
 
     double pobs[5] = {1,2,3,4,5};
     double psim[5] = {1,2,3,4,5};
-    double ns = nse(pobs, psim, 5);
+    double ns = nse_c(pobs, psim, 5);
     printf("%f\n", ns);
 
     return 0;

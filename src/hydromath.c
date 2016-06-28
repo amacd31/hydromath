@@ -5,7 +5,7 @@
 /*
     Mean Square Error
 */
-double mse(double * obs, double * sim, int n) {
+double mse_c(double * obs, double * sim, int n) {
     int t;
     double sum_y = 0;
     for (t = 0; t < n; t++) {
@@ -18,8 +18,8 @@ double mse(double * obs, double * sim, int n) {
 /*
     Root Mean Square Error
 */
-double rmse(double * obs, double * sim, int n) {
-    return sqrt(mse(obs, sim, n));
+double rmse_c(double * obs, double * sim, int n) {
+    return sqrt(mse_c(obs, sim, n));
 }
 
 /*
@@ -28,7 +28,7 @@ double rmse(double * obs, double * sim, int n) {
     References:
         * Nash, Jea, and J. V. Sutcliffe. 1970. "River Flow Forecasting through Conceptual Models Part I-A Discussion of Principles." Journal of Hydrology 10 (3): 282-90.
 */
-double nse(double * obs, double * sim, int n) {
+double nse_c(double * obs, double * sim, int n) {
 
     double m = mean(obs, n);
 
