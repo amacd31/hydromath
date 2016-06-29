@@ -29,5 +29,17 @@ int main(void)
     double ns = nse_c(pobs, psim, 5);
     printf("%f\n", ns);
 
+    double kge = kge_c(obs, sim, 5);
+    printf("KGE: %f\n", kge);
+
+    kge = kge_c(pobs, psim, 5);
+    printf("Perfect KGE: %f\n", kge);
+
+    double cv = covariance(obs, sim, 5);
+    printf("Covariance: %f\n", cv);
+
+    cv = covariance(pobs, psim, 5);
+    printf("Covariance: %f\n", cv);
+
     return 0;
 }
