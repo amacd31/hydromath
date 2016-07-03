@@ -74,3 +74,23 @@ double kge_c(double * obs, double * sim, int n) {
 
     return 1 - sqrt(pow(r - 1, 2) + pow(alpha - 1, 2) + pow(beta - 1, 2));
 }
+
+/*
+    Heaviside step function
+
+    References:
+        * https://en.wikipedia.org/wiki/Heaviside_step_function
+        * Hersbach, H. (2000). Decomposition of the Continuous Ranked Probability Score for Ensemble Prediction Systems. Weather and Forecasting, 15(5), 559–570. http://doi.org/10.1175/1520-0434(2000)015<0559:DOTCRP>2.0.CO;2
+
+ */
+void heaviside(double * input_data, double * output_data, double x, int n) {
+    int i;
+    for(i = 0; i < n; i++) {
+        if (input_data[i] < x) {
+            output_data[i] = 0;
+        }
+        else {
+            output_data[i] = 1;
+        }
+    }
+}

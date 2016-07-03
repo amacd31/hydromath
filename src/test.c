@@ -41,5 +41,13 @@ int main(void)
     cv = covariance(pobs, psim, 5);
     printf("Covariance: %f\n", cv);
 
+    double out_data[6] = {0,0,0,0,0,0};
+    heaviside(pobs, out_data, 3.0, 6);
+
+    int i;
+    for (i = 0; i < 5; i++) {
+        printf("Heaviside %d: %f\n", i, out_data[i]);
+    }
+
     return 0;
 }
