@@ -11,5 +11,5 @@ script:
   - conda build conda.recipe --quiet
 
 after_success:
-  - python ci/move_conda_package.py conda.recipe
-  - binstar -t $CONDA_TOKEN upload *.tar.bz2
+  - conda config --set anaconda_upload yes
+  - python --token $CONDA_TOKEN ci/move_conda_package.py conda.recipe
