@@ -8,8 +8,5 @@ install:
   - source ci/travis/install.sh
 
 script:
-  - conda build conda.recipe --quiet
-
-after_success:
   - conda config --set anaconda_upload yes
-  - python --token $CONDA_TOKEN ci/move_conda_package.py conda.recipe
+  - conda build --token $CONDA_TOKEN conda.recipe
