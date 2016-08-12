@@ -1,7 +1,7 @@
 MINICONDA_URL="http://repo.continuum.io/miniconda"
 MINICONDA_FILE="Miniconda-latest-Linux-x86_64.sh"
 wget "${MINICONDA_URL}/${MINICONDA_FILE}"
-bash $MINICONDA_FILE -b
+bash $MINICONDA_FILE -b -p $HOME/miniconda
 
 export PATH=$HOME/miniconda/bin:$PATH
 
