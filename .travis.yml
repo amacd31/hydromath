@@ -1,0 +1,15 @@
+language: c
+
+env:
+  global:
+    - secure: "dX8E2Y5YqsUmikZxTsZS99jzlTz0bxKq0MvcM2mfGoiJhCuoauV9ilxjF5LwgWFsxBNYLj9q7bPQliBAEx2dlcCA16oLIKMoyn6qJpL1YF1ak4Mx6enQeCE1dsIFWrPf2SwYGWHUEcPdrtxyLsHEk8PRT1pHR1zy9cOLOeJUFZ+JpB5sVWf2/p15gWyC3QO5EgmxOXc0ch+Qv2CLT9swJiytFQXmUpOgeZyHKQo8a/UO8YfY0n5CCsgVVZQkUcxK1gsdPGfcjPCS3EJdryKH4KZF4iG5XMlH0YHd/VBKrAZhjikZ0cWMUSTmh8UyZUOz93k3/kRZr8GuaOCViu1SxprK5s8auYOq88/ya7gdR/HEwUuuzsMk9c/nffZSjc92H6cxGbd2sJ4wPM0boIMjfaF2x2yC+nKGB1bC76Tzpe/lRlLCszVM14n3SxNQZfKlHk1h289hybTwVtQI50BlmlfC5DzfNhWhENhmHWNit+xilyaazdxiCfknghO8mb55T4t3kl8s47NtByF5NJIkFlliVRQsFIX6ZJ+VCM8WQycyW9Mkonvxsbkc5ZCX0zuLQRJxz5G6f8/yamcESV6NogSHnAUBMJ41JelARIJa8q+i0e0E75+HIXSggUwcTDU+EuHLmaynvK4+LFIgYhqk3zjOAWwNtHDy2RwpAFUMVGs="
+
+install:
+  - source ci/travis/install.sh
+
+script:
+  - conda build conda.recipe --quiet
+
+after_success:
+  - python ci/move_conda_package.py conda.recipe
+  - binstar -t $CONDA_TOKEN upload *.tar.bz2
