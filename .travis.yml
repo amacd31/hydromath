@@ -9,4 +9,4 @@ install:
 
 script:
   - conda build conda.recipe
-  - anaconda upload --label dev --token $CONDA_TOKEN `python ci/get_latest_conda_build_path.py conda.recipe`
+  - anaconda --token $CONDA_TOKEN upload --label dev `python ci/get_latest_conda_build_path.py conda.recipe`
