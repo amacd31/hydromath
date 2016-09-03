@@ -1,5 +1,12 @@
 MINICONDA_URL="http://repo.continuum.io/miniconda"
-MINICONDA_FILE="Miniconda-latest-Linux-x86_64.sh"
+
+platform=$(uname);
+if [[ $platform == 'Linux' ]]; then
+    MINICONDA_FILE="Miniconda-latest-Linux-x86_64.sh"
+elif [[ $platform == 'Darwin' ]]; then
+    MINICONDA_FILE="Miniconda-latest-MacOSX-x86_64.sh"
+fi;
+
 wget "${MINICONDA_URL}/${MINICONDA_FILE}"
 bash $MINICONDA_FILE -b -p $HOME/miniconda
 
