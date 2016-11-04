@@ -38,6 +38,14 @@ START_TEST(test_sum_complex)
 }
 END_TEST
 
+START_TEST(test_mean)
+{
+    double in_data[5] = {1.,2.,3.,4.,5.};
+    double m = mean(in_data, 5);
+    ck_assert(m == 3);
+}
+END_TEST
+
 Suite * stats_suite(void)
 {
     Suite *s;
@@ -50,6 +58,7 @@ Suite * stats_suite(void)
 
     tcase_add_test(tc_core, test_sum);
     tcase_add_test(tc_core, test_sum_complex);
+    tcase_add_test(tc_core, test_mean);
     suite_add_tcase(s, tc_core);
 
     return s;
