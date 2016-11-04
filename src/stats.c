@@ -1,12 +1,26 @@
 #include <stdio.h>
 #include <math.h>
 
+/**
+ * Sum method using Kahan summation algorithm.
+ *
+ * References:
+ *    - Higham, N. (1993). The Accuracy of Floating Point Summation. SIAM Journal on Scientific Computing, 14(4), 783-799. https://doi.org/10.1137/0914050
+ *    - Kahan, W. (1965). Pracniques: further remarks on reducing truncation errors. Communications of the ACM, 8(1), 40.
+ *
+ */
 double sum(double * data, int n) {
     double sum = 0;
+    double e = 0;
 
     int i;
+    double y;
+    double temp;
     for(i = 0; i < n; i++) {
-        sum += data[i];
+        y = data[i] - e;
+        temp = sum + y;
+        e = (temp - sum) - y;
+        sum = temp;
     }
 
     return sum;
