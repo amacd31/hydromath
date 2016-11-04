@@ -22,4 +22,4 @@ install:
 
 script:
   - conda build conda.recipe
-  - anaconda --token $CONDA_TOKEN upload `python ci/get_labels.py` `python ci/get_latest_conda_build_path.py conda.recipe`
+  - anaconda --token $CONDA_TOKEN upload `python ci/get_labels.py` `conda build --output conda.recipe`
