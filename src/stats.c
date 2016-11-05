@@ -27,14 +27,7 @@ double sum(double * data, int n) {
 }
 
 double mean(double * data, int n) {
-    double sum = 0;
-
-    int i;
-    for(i = 0; i < n; i++) {
-        sum += data[i];
-    }
-
-    return sum / n;
+    return sum(data, n) / n;
 }
 
 double covariance(double * data_a, double * data_b, int n) {
