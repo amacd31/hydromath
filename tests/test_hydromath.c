@@ -9,7 +9,7 @@ START_TEST(test_kge_perfect)
 {
     double data[7] = {1.,2.,3.,4.,5.,6.,7.};
     double s = kge_c(data, data, 7);
-    ck_assert(round(s * 15) / 15 == 1.0);
+    ck_assert(s == 1.0);
 }
 END_TEST
 
