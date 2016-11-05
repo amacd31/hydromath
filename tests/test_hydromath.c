@@ -1,5 +1,6 @@
 #include <check.h>
 #include <math.h>
+#include "stats.h"
 #include "hydromath.h"
 
 /** START KGE TESTS **/
@@ -126,3 +127,25 @@ START_TEST(test_rmse)
 }
 END_TEST
 /** END RMSE TESTS **/
+
+/** START HEAVISIDE TESTS **/
+START_TEST(test_heaviside)
+{
+    double data[13] = {-4,-3,-2,-1,0,1,2,1,0,-1,-2,-3,-4};
+    double result[13];
+    heaviside(data, result, 13);
+    ck_assert(sum(result, 13) == 5.0);
+}
+END_TEST
+
+START_TEST(test_heaviside_simple)
+{
+    double data[2] = {-1,1};
+    double result[2];
+    heaviside(data, result, 2);
+    ck_assert(result[0] == 0);
+    ck_assert(result[1] == 1);
+}
+END_TEST
+
+/** END HEAVISIDE TESTS **/
