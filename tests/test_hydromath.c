@@ -1,4 +1,5 @@
 #include <check.h>
+#include <math.h>
 #include "hydromath.h"
 
 /** START NSE TESTS **/
@@ -58,3 +59,31 @@ START_TEST(test_mse)
 }
 END_TEST
 /** END MSE TESTS **/
+
+/** START RMSE TESTS **/
+START_TEST(test_rmse_perfect)
+{
+    double data[5] = {1.,2.,3.,4.,5.};
+    double s = rmse_c(data, data, 5);
+    ck_assert(s == 0.0);
+}
+END_TEST
+
+START_TEST(test_rmse_bad)
+{
+    double obs_data[5] = {1.,2.,3.,4.,5.};
+    double sim_data[5] = {3.,3.,3.,3.,3.};
+    double s = rmse_c(obs_data, sim_data, 5);
+    ck_assert(s == sqrt(2.0));
+}
+END_TEST
+
+START_TEST(test_rmse)
+{
+    double obs_data[5] = {13.,17.,18.,20.,24.};
+    double sim_data[5] = {12.,15.,20.,22.,24.};
+    double s = rmse_c(obs_data, sim_data, 5);
+    ck_assert(s == sqrt(2.6));
+}
+END_TEST
+/** END RMSE TESTS **/

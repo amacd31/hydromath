@@ -24,6 +24,10 @@ Suite * stats_suite(void)
     tcase_add_test(tc_core, test_mse_bad);
     tcase_add_test(tc_core, test_mse);
 
+    tcase_add_test(tc_core, test_rmse_perfect);
+    tcase_add_test(tc_core, test_rmse_bad);
+    tcase_add_test(tc_core, test_rmse);
+
 
     suite_add_tcase(s, tc_core);
 
