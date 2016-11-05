@@ -16,6 +16,11 @@ Suite * stats_suite(void)
     tcase_add_test(tc_core, test_sum_complex);
     tcase_add_test(tc_core, test_mean);
 
+    tcase_add_test(tc_core, test_kge_perfect);
+    tcase_add_test(tc_core, test_kge_climatology);
+    tcase_add_test(tc_core, test_kge_biased_climatology);
+    tcase_add_test(tc_core, test_kge);
+
     tcase_add_test(tc_core, test_nse_perfect);
     tcase_add_test(tc_core, test_nse_bad);
     tcase_add_test(tc_core, test_nse);

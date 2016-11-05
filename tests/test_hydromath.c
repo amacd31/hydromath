@@ -2,6 +2,45 @@
 #include <math.h>
 #include "hydromath.h"
 
+/** START KGE TESTS **/
+
+START_TEST(test_kge_perfect)
+{
+    double data[7] = {1.,2.,3.,4.,5.,6.,7.};
+    double s = kge_c(data, data, 7);
+    ck_assert(round(s * 15) / 15 == 1.0);
+}
+END_TEST
+
+START_TEST(test_kge_climatology)
+{
+    double obs_data[5] = {1.,2.,3.,4.,5.};
+    double sim_data[5] = {3.,3.,3.,3.,3.};
+    double s = kge_c(obs_data, sim_data, 5);
+    ck_assert(s == 1 - sqrt(2.0));
+}
+END_TEST
+
+START_TEST(test_kge_biased_climatology)
+{
+    double obs_data[5] = {1.,2.,3.,4.,5.};
+    double sim_data[5] = {6.,6.,6.,6.,6.};
+    double s = kge_c(obs_data, sim_data, 5);
+    ck_assert(s == 1 - sqrt(3.0));
+}
+END_TEST
+
+START_TEST(test_kge)
+{
+    double obs_data[13] = {1,2,3,4,5,6,7,6,5,4,3,2,1};
+    double sim_data[13] = {1,2,3,4,5,6,6,6,5,4,3,2,1};
+    double s = kge_c(obs_data, sim_data, 13);
+    ck_assert(s == 0.93444263181747966307000297092599794268608093261719);
+}
+END_TEST
+
+/** END KGE TESTS **/
+
 /** START NSE TESTS **/
 
 START_TEST(test_nse_perfect)
