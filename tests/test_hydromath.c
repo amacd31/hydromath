@@ -30,3 +30,31 @@ START_TEST(test_nse)
 END_TEST
 
 /** END NSE TESTS **/
+
+/** START MSE TESTS **/
+START_TEST(test_mse_perfect)
+{
+    double data[5] = {1.,2.,3.,4.,5.};
+    double s = mse_c(data, data, 5);
+    ck_assert(s == 0.0);
+}
+END_TEST
+
+START_TEST(test_mse_bad)
+{
+    double obs_data[5] = {1.,2.,3.,4.,5.};
+    double sim_data[5] = {3.,3.,3.,3.,3.};
+    double s = mse_c(obs_data, sim_data, 5);
+    ck_assert(s == 2.0);
+}
+END_TEST
+
+START_TEST(test_mse)
+{
+    double obs_data[5] = {13.,17.,18.,20.,24.};
+    double sim_data[5] = {12.,15.,20.,22.,24.};
+    double s = mse_c(obs_data, sim_data, 5);
+    ck_assert(s == 2.6);
+}
+END_TEST
+/** END MSE TESTS **/
